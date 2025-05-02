@@ -1,0 +1,1127 @@
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+    <style>
+        /* Basic CSS for styling the form */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 380px; /* Adjusted from 400px to 380px */
+            margin: 23.75px auto; /* Adjusted from 25px to 23.75px */
+            padding: 19px; /* Adjusted from 20px to 19px */
+            background-color: #fff;
+            border-radius: 7.6px; /* Adjusted from 8px to 7.6px */
+            box-shadow: 0 0 9.5px rgba(0, 0, 0, 0.095); /* Adjusted from 10px to 9.5px */
+        }
+
+        h2, h3, h4 {
+            text-align: center;
+        }
+
+        h4.customFormHeader {
+            font-size: 20px;
+            padding: 10px 0;
+        }
+
+        .form-group {
+            margin-bottom: 19px; /* Adjusted from 20px to 19px */
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 4.75px; /* Adjusted from 5px to 4.75px */
+        }
+
+        .form-group input {
+            width: 95%; /* Adjusted from 100% to 95% */
+            padding: 7.6px; /* Adjusted from 8px to 7.6px */
+            border-radius: 4.75px; /* Adjusted from 5px to 4.75px */
+            border: 0.95px solid #ccc; /* Adjusted from 1px to 0.95px */
+        }
+
+        .btn {
+            display: block;
+            width: 95%; /* Adjusted from 100% to 95% */
+            padding: 9.5px; /* Adjusted from 10px to 9.5px */
+            border: none;
+            border-radius: 4.75px; /* Adjusted from 5px to 4.75px */
+            background-color: #007bff;
+            color: #fff;
+            font-size: 15.2px; /* Adjusted from 16px to 15.2px */
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .custom_btn_controls.disabled,
+        .custom_btn_controls:disabled {
+            opacity: 0.4;
+        }
+
+        .parent p:last-of-type {
+            color: blue;
+        }
+
+
+        .customLoginWrapper {
+            padding: 9.5px; /* Adjusted from 10px to 9.5px */
+        }
+
+        .customQuestionaireApp {
+            padding: 9.5px; /* Adjusted from 10px to 9.5px */
+        }
+
+
+        .customButtonText {
+            font-size: 14.25px; /* Adjusted from 15px to 14.25px */
+        }
+
+        .customButtonIcon {
+            font-size: 12.35px; /* Adjusted from 13px to 12.35px */
+        }
+
+        .custom_btn_controls {
+            padding: 0px 3.8px; /* Adjusted from 4px to 3.8px */
+            margin: 0.95px; /* Adjusted from 1px to 0.95px */
+        }
+
+        .customWordButton {
+            margin: 0.95px; /* Adjusted from 1px to 0.95px */
+        }
+
+        .customLogoutBtn {
+            display: inline-block;
+            width: auto !important;
+            padding: 3px 8px;
+            margin-left: 10px;
+            font-size: 14.25px;
+            position: relative;
+            top: -5px;
+        }
+
+        .welcomeHeader {
+            display: block;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            height: 45px;
+        }
+
+        .welcomeHeader h4 {
+            margin: 0;
+        }
+
+        .welcomeHeader .user-info {
+            float: left;
+        }
+
+        /* Updated Auth Form Styles */
+        .auth-container {
+            max-width: 420px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2c3e50;
+        }
+
+        .auth-header h4 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .auth-header p {
+            color: #7f8c8d;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .auth-form {
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-size: 15px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .auth-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .auth-divider {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .auth-divider::before,
+        .auth-divider::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background-color: #e0e0e0;
+        }
+
+        .auth-divider::before {
+            left: 0;
+        }
+
+        .auth-divider::after {
+            right: 0;
+        }
+
+        .auth-divider span {
+            background: #fff;
+            padding: 0 10px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .auth-message {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .auth-message.error {
+            background-color: #fee2e2;
+            color: #dc2626;
+        }
+
+        .auth-message.success {
+            background-color: #dcfce7;
+            color: #16a34a;
+        }
+
+        /* Add these styles for the registration message */
+        .registration-message {
+            margin-top: 10px;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .registration-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .registration-message.error {
+            background-color: #fee2e2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        .registration-message.success {
+            background-color: #dcfce7;
+            color: #16a34a;
+            border: 1px solid #bbf7d0;
+        }
+
+        .solid-circle-triangle {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            padding: 5px;
+            align-items: center;
+            background-color: black;
+            border-radius: 50%;
+            position: relative;
+        }
+        .rotated-topdown {
+            transform: rotate(180deg);
+        }
+
+        .solid-circle-triangle::before {
+            content: "";
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 7.5px solid white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .customWelcomeHeaderRightBlock {
+            float: right;
+        }
+
+        .customWelcomeHeaderWhenHidden {
+            display: none;
+            text-align: right;
+            padding: 5px;
+        }
+
+        .customFontForDescriptiveH4 {
+            font-size: 18px;
+        }
+
+        .custom_progress_button {
+            padding: 10px;
+            text-align: right;
+        }
+
+        .custom_progress_button .solid-circle-triangle {
+            top: 5px;
+        }
+    </style>
+</head>
+
+<body data-bind="template: { afterRender: initApp }">
+    <!-- ko ifnot: userLoggedIn -->
+    <div class="auth-container">
+        <div class="auth-header">
+            <h4>Welcome to Translation App</h4>
+            <p>First time users, please register below</p>
+        </div>
+        <form class="auth-form" action="/register_mysql" id="registrationForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" required placeholder="Confirm your password">
+            </div>
+            <button type="submit" class="auth-btn" data-bind="click: customRegister">
+                Register <div class="spinner-border" id="spinner" style="display: none; width: 0.95rem; height: 0.95rem;"></div>
+            </button>
+            <div class="registration-message" data-bind="text: registrationMessage, css: { 'show': registrationMessage(), 'error': registrationMessage() && registrationMessage().includes('exists'), 'success': registrationMessage() && !registrationMessage().includes('exists') }"></div>
+        </form>
+
+        <div class="auth-divider">
+            <span>OR</span>
+        </div>
+
+        <div class="auth-header">
+            <p>Already have an account?</p>
+        </div>
+        <form class="auth-form" action="/login_mysql" id="loginForm">
+            <div class="form-group">
+                <label for="login-username">Username</label>
+                <input type="text" id="login-username" name="username" required placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" name="password" required placeholder="Enter your password">
+            </div>
+            <button type="submit" class="auth-btn" data-bind="click: customLogin">Login</button>
+            <div class="registration-message" data-bind="text: loginMessage, css: { 'show': loginMessage(), 'error': loginMessage() && loginMessage().includes('Invalid'), 'success': loginMessage() && !loginMessage().includes('Invalid') }"></div>
+        </form>
+    </div>
+
+    <!-- /ko -->
+
+    <!-- ko if: userLoggedIn -->
+    <div class="customQuestionaireApp">
+        <div class="customWelcomeHeaderWhenHidden">
+            <div class="solid-circle-triangle rotated-topdown" data-bind="click: clearHeader"></div>
+        </div>
+        <div class="welcomeHeader">
+            <div class="user-info">
+                <h4 class="customFontForDescriptiveH4">Welcome, <span data-bind="text: username"></span>!</h4>
+            </div>
+
+            <div class="customWelcomeHeaderRightBlock">
+                <div class="solid-circle-triangle" data-bind="click: clearHeader"></div>
+                <button class="btn btn-danger customLogoutBtn" data-bind="click: logout">Logout</button>
+            </div>
+        </div>
+        <h4 class="customHeaderChooseChapter customFontForDescriptiveH4">अध्याय चुनें:
+            <select class="customChapterSelect" data-bind="options: availableChapters, 
+                optionsText: function(item) {
+                    return item.ch_num + ' : ' + item.ch_name
+                },
+                optionsValue: 'ch_num',
+                value: selectedChapter, 
+                event: { change: function(){ qCount(0); next_ques_chapter_wise(); } }"></select>
+        </h4>
+        <h4 class="customHeaderChooseDifficulty customFontForDescriptiveH4">कठिनता: 
+            <select class="customDifficultySelect" data-bind="options: availableDifficulties, 
+                value: selectedDifficulty,
+                event: { change: function(){ qCount(0); next_ques_chapter_wise(); } }"></select>
+        </h4>
+
+        <h4 class="customHeaderTranslate customFontForDescriptiveH4">इन वाक्यों को हिंदी से अंग्रेजी में बदलें:</h4>
+        <h4><span class="customHeaderSentenceLabel">Sentence:</span> <span class="customHindiSentence" data-bind="text: hindiSentence"></span></h4>
+
+
+        <div class="customWordButtonWrapper">
+            <div data-bind="foreach: optionWords">
+                <button class="customWordButton" data-bind="click: function(data, event) {
+                // console.log(event.target.innerText);
+                // console.log(wordsPickedArray());
+                //$parent.wordsPickedArray.push(event.target.innerText);
+                wordsPickedArray.push(event.target.innerText);
+
+                event.target.disabled = true;
+            }, text: $data"></button>
+            </div>
+        </div>
+
+        <br>
+
+        <button data-bind="click: clear_words_from_sentence" class="custom_btn_controls btn-info btn-lg"><i
+                class="material-icons customButtonIcon">backspace</i>
+            <span class="customButtonText">Clear</span></button>
+
+        <button data-bind="click: clear_all_words" class="custom_btn_controls btn-info btn-lg"><i
+                class="material-icons customButtonIcon">backspace</i>
+            <span class="customButtonText">Clear All</span></button>
+
+        <button data-bind="click: submit_sentence" type="button" class="custom_btn_controls btn-info btn-lg"
+            data-toggle="modal" data-target="#myModal">
+            <i class="material-icons customButtonIcon">check_circle</i> <span
+                class="customButtonText">Submit</span></button>
+
+        <button data-bind="click: handle_next_question, enable: hasSubmittedAnswer"
+            class="custom_btn_controls btn-info btn-lg"><i class="material-icons customButtonIcon">forward</i> <span
+                class="customButtonText">Next</span></button>
+
+        <button data-bind="click: show_hint, enable: !hintDisabled()" class="custom_btn_controls btn-info btn-lg">
+            <i class="material-icons customButtonIcon">help_outline</i>
+            <span class="customButtonText">Hint (<span data-bind="text: hintCounter"></span>)</span></button>
+    
+        <button disabled class="custom_btn_controls btn-lg" style="opacity: 1;">
+            <span class="customButtonText"><span data-bind="text: qCount"></span>/<span
+                    data-bind="text: total_qcount"></span></span></button>
+    
+        <br>
+        <br>
+        <h3 class="customSentenceFormed" data-bind="text: sentenceFormed"></h3>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"></h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="custom_model_body_message">Some text in the modal.</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- /ko -->
+    <div id="progressToggle"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+
+    <script type="text/babel">
+    class ProgressToggle extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                showProgress: false,
+                progressData: [],
+                loading: false
+            };
+        }
+
+        // fetchProgressData = async () => {
+        //     try {
+        //         this.setState({ loading: true });
+        //         const response = await fetch(`${HOST}/get_user_progress_mysql`, {
+        //             method: 'GET',
+        //             headers: {
+        //                 'Content-Type': 'application/json',
+        //             }
+                    
+        //         });
+        //         console.log(response);
+        //         const data = await response.json();
+        //         console.log(data);
+        //         this.setState({ progressData: data, loading: false });
+        //     } catch (error) {
+        //         console.error('Error fetching progress data:', error);
+        //         this.setState({ loading: false });
+        //     }
+        // }
+
+        fetchProgressData = async () => {
+            try {
+                this.setState({ loading: true });
+                const response = await fetch(`${HOST}/get_user_progress_mysql`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username: localStorage.getItem("questionnaire_username") }),
+                });
+                const data = JSON.parse(await response.json());
+                console.log("API Response:", data);
+                console.log("Type of data:", typeof data);
+                // Ensure progressData is always an array
+                this.setState({ progressData: data ? data : [], loading: false }, () => {
+                    console.log("Updated progressData:", this.state.progressData);
+                });
+            } catch (error) {
+                console.error('Error fetching progress data:', error);
+                this.setState({ progressData: [], loading: false });
+            }
+        };
+        
+        toggleProgress = () => {
+            this.setState(prevState => ({
+                showProgress: !prevState.showProgress
+            }));
+        }
+
+        // render() {
+        //     return (
+        //         <React.Fragment>
+        //             <div 
+        //                 className="custom_progress_button" 
+        //                 onClick={() => {this.toggleProgress(); this.fetchProgressData();}}
+        //             >
+        //                 Progress <div className="solid-circle-triangle rotated-topdown"></div>
+        //             </div>
+        //             <div 
+        //                 className="custom_progress_wrapper" 
+        //                 style={{ display: this.state.showProgress ? 'block' : 'none' }}
+        //             >
+        //                 <table className="table table-striped">
+        //                     <thead>
+        //                         <tr>
+        //                             <th>User</th>
+        //                             <th>Date</th>
+        //                             <th>Total</th>
+        //                             <th>Right</th>
+        //                             <th>Wrong</th>
+        //                         </tr>
+        //                     </thead>
+        //                     <tbody>
+        //                         {this.state.progressData.map((attempt, index) => (
+        //                             <tr key={index}>
+        //                                 <td>{attempt.username}</td>
+        //                                 <td>{attempt.attempt_time}</td>
+        //                                 <td>{attempt.total}</td>
+        //                                 <td>{attempt.true_cnt}</td>
+        //                                 <td>{attempt.false_cnt}</td>
+        //                             </tr>
+        //                         ))}
+        //                     </tbody>
+        //                 </table>
+
+        //             </div>
+        //         </React.Fragment>
+        //     );
+        // }
+
+        render() {
+            return (
+                <React.Fragment>
+                    <div 
+                        className="custom_progress_button" 
+                        onClick={() => { this.toggleProgress(); this.fetchProgressData(); }}
+                    >
+                        Progress <div className="solid-circle-triangle rotated-topdown"></div>
+                    </div>
+                    <div 
+                        className="custom_progress_wrapper" 
+                        style={{ display: this.state.showProgress ? 'block' : 'none' }}
+                    >
+                        {this.state.progressData && this.state.progressData.length > 0 ? (
+                            <table className="table table-striped">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th>Date</th>
+                                        <th>Total</th>
+                                        <th>Right</th>
+                                        <th>Wrong</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.state.progressData.map((attempt, index) => (
+                                        <tr key={index}>
+                                            
+                                            <td>{attempt.attempt_time}</td>
+                                            <td>{attempt.total}</td>
+                                            <td>{attempt.true_cnt}</td>
+                                            <td>{attempt.false_cnt}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        ) : (
+                            <p>No progress data available.</p>
+                        )}
+                    </div>
+                </React.Fragment>
+            );
+        }
+    }
+
+    ReactDOM.render(
+        <ProgressToggle />,
+        document.getElementById('progressToggle')
+    );
+    </script>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+
+<script>
+    let hostname = window.location.hostname;
+    //let HOST = 'https://ashishjain1547.pythonanywhere.com'
+    let HOST = 'http://127.0.0.1:6050';
+
+
+    let set_of_words = {
+        "set1": ["is", "was", "be", "been", "am"],
+        "set2": ["this", "that", "here", "there", "those", "them"],
+        "set3": ["what", "where", "when", "how"],
+        "set4": ["if", "but", "then", "else", "because"],
+        "set5": ["he", "him", "she", "her", "they", "it"],
+        "set6": ["a", "an", "the", "some"],
+        "set7": ["in", "on", "of", "to", "upon", "up", "down"],
+        "set8": ["no", 'not', 'nor', 'neither'],
+        "set9": ["do", "does", "did", 'done', "doing"],
+        "set10": ["eat", "eats", "ate", "eating", "eaten"]
+    }
+
+    let viewModel = function () {
+        let self = this;
+        self.more_text = ko.observable("Hello!");
+
+        self.customMessage = ko.observable("");
+
+        // Initialize function that runs after DOM is ready
+        self.initApp = function() {
+            console.log("App initialized!");
+            // Check if user was previously logged in
+            let savedUsername = localStorage.getItem("questionnaire_username");
+            let savedToken = localStorage.getItem("questionnaire_token");
+            
+            if (savedUsername && savedToken) {
+                self.username(savedUsername);
+                self.jwtToken(savedToken);
+                self.userLoggedIn(true);
+                self.getChapters();
+                self.next_ques_chapter_wise();
+                self.getUserProgress();
+            }
+        };
+
+        self.jwtToken = ko.observable();
+        self.userLoggedIn = ko.observable(false);
+
+
+        self.hindiSentence = ko.observable("");
+        self.englishSentence = ko.observable("");
+
+        self.optionWords = ko.observableArray([]);
+
+        self.hintCounter = ko.observable(0);
+        self.hintDisabled = ko.observable(false);
+
+        self.wordsPickedArray = ko.observableArray([]);
+        self.sentenceFormed = ko.computed(function () {
+            return self.wordsPickedArray().join(" ");
+        });
+
+        self.username = ko.observable("");
+
+        self.hasSubmittedAnswer = ko.observable(false);
+
+        self.pair_id = ko.observable(-1);
+
+
+        // Observable array to hold the data
+        self.availableChapters = ko.observableArray([]);
+
+        self.chapters_qcount = {}
+        self.qCount = ko.observable(0);
+        self.total_qcount = ko.observable(0);
+        self.chapter_numbers = ko.observableArray();
+
+        self.availableDifficulties = ko.observableArray(["Easy", "Medium", "Hard"]);
+        self.selectedDifficulty = ko.observable("Easy");
+
+        self.customRegister = function () {
+            $('#spinner').show();
+            self.registrationMessage(""); // Clear previous message
+
+            // Get form data
+            var formData = $('#registrationForm').serialize();
+
+            // Send AJAX request
+            $.ajax({
+                url: `${HOST}/register_mysql`,
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    // Handle success response
+                    if (response.error) {
+                        console.log(response.error);
+                        self.registrationMessage(response.error);
+                        $('#spinner').hide();
+                        return;
+                    } else {
+                        console.log(response);
+                        console.log('Registration successful!');
+                        self.registrationMessage("Registration successful! Logging you in...");
+
+                        self.username(response['username']);
+                        localStorage.setItem("questionnaire_username", response['username']);
+
+                        self.jwtToken(response['token']);
+                        localStorage.setItem("questionnaire_token", response['token']);
+
+                        // Delay the login transition slightly to show the success message
+                        setTimeout(function() {
+                            self.userLoggedIn(true);
+                            self.getChapters();
+                            self.next_ques_chapter_wise();
+                            self.getUserProgress();
+                        }, 1000);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    // Handle error response
+                    console.log(xhr.responseText);
+                    console.log(status);
+                    console.log(error);
+
+                    if (xhr.responseText.includes("Username is not unique")) {
+                        // This error comes from user_login table's unique constraint
+                        self.registrationMessage("Username already exists. Please choose a different username.");
+                    } else if (xhr.responseText.includes("UNIQUE constraint failed: attempted_hindi_to_eng_ques")) {
+                        // This error comes from attempted_hindi_to_eng_ques table's unique constraint
+                        self.registrationMessage("This username has existing progress data. Please choose a different username.");
+                    } else if (xhr.responseText.includes("UNIQUE constraint failed")) {
+                        // Generic unique constraint error
+                        self.registrationMessage("Database error. Please try again with a different username.");
+                    } else {
+                        self.registrationMessage("Registration failed. Please try again.");
+                    }
+                    $('#spinner').hide();
+                }
+            });
+        }
+
+        self.showProtectedResource = function () {
+            $.ajax({
+                url: `${HOST}/protected`,
+                type: 'GET',
+
+                headers: {
+                    'Authorization': self.jwtToken()
+                },
+
+                success: function (response) {
+                    // Handle success response
+                    console.log(response);
+                    console.log('showProtectedResource() successful!');
+                },
+                error: function (xhr, status, error) {
+                    // Handle error response
+                    console.error(xhr.responseText);
+                    alert('Registration failed. Please try again.');
+                }
+            });
+        }
+
+        self.loginMessage = ko.observable("");
+
+        self.customLogin = function () {
+            self.loginMessage(""); // Clear previous message
+
+            // Get form data
+            var formData = $('#loginForm').serialize();
+
+            // Send AJAX request
+            $.ajax({
+                url: `${HOST}/login_mysql`,
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    console.log(response);
+                    console.log('Login successful!');
+                    self.loginMessage("Login successful! Redirecting...");
+
+                    self.username(response['username']);
+                    localStorage.setItem("questionnaire_username", response['username']);
+
+                    self.jwtToken(response['token']);
+                    localStorage.setItem("questionnaire_token", response['token']);
+
+                    // Delay the login transition slightly to show the success message
+                    setTimeout(function() {
+                        self.userLoggedIn(true);
+                        self.getChapters();
+                        self.next_ques_chapter_wise();
+                        self.getUserProgress();
+                    }, 1000);
+                },
+                error: function (xhr, status, error) {
+                    // Handle error response
+                    console.error(xhr.responseText);
+                    console.error(xhr.status);
+                    console.log('Request failed. Please try again.');
+
+                    self.loginMessage("Invalid username or password. Please try again.");
+                }
+            });
+        }
+
+        self.logout = function() {
+            // Clear user authentication
+            localStorage.removeItem("questionnaire_username");
+            localStorage.removeItem("questionnaire_token");
+            
+            // Reset translation state
+            self.userLoggedIn(false);
+            self.username("");
+            self.jwtToken("");
+            self.hindiSentence("");
+            self.englishSentence("");
+            self.wordsPickedArray([]);
+            self.optionWords([]);
+            self.hintCounter(0);
+            self.hintDisabled(false);
+            self.qCount(0);
+            self.total_qcount(0);
+            self.availableChapters([]);
+            self.pair_id(-1);
+            self.hasSubmittedAnswer(false);
+            self.chapters_qcount = {};
+            self.chapter_numbers([]);
+            self.totalAttempted(0);
+            self.customMessage("Logged out successfully");
+        }
+
+        // Function to load data from API
+        self.getChapters = function () {
+            $.ajax({
+                url: `${HOST}/get_qcount_for_chapters_and_difficulty_wise`,
+                method: 'GET',
+                success: function (response) {
+                    console.log(response);
+                    self.availableChapters(response);
+
+                    for (const i of response) {
+                        self.chapters_qcount[i.ch_num] = {
+                            "Easy": i.easy,
+                            "Medium": i.medium,
+                            "Hard": i.hard
+                        };
+
+                        self.chapter_numbers().push(i.ch_num);
+                    }
+
+                    console.log("self.chapters_qcount");
+                    console.log(self.chapters_qcount);
+                    /*
+                    self.availableChapters = ko.observableArray([
+                        { "ch_num": 1.1, "ch_name": "Ram and Mango", "qcount": "5" },
+                        { "ch_num": 1.2, "ch_name": "To", "qcount": "6" },
+                        { "ch_num": 1.3, "ch_name": "This and These", "qcount": "5" },
+                        { "ch_num": 1.4, "ch_name": "With", "qcount": "6" },
+                        { "ch_num": 2.1, "ch_name": "When", "qcount": "5" },
+                    ]);
+                    */
+                },
+                error: function (error) {
+                    console.error('Error loading data:', error);
+                }
+            });
+        };
+
+        self.selectedChapter = ko.observable(1);
+
+
+        self.next_ques_chapter_wise = function () {
+            data = {
+                username: self.username(),
+                chapter: self.selectedChapter(),
+                difficulty: self.selectedDifficulty()
+            }
+            console.log(data)
+
+            $.post({
+                url: `${HOST}/next_ques_chapter_and_difficulty_wise`,
+                headers: { "Content-Type": "application/json" },
+                data: data,
+
+                success: function (result) {
+                    self.total_qcount(self.chapters_qcount[self.selectedChapter()]['' + self.selectedDifficulty()]);
+                    let temp = self.qCount() + 1;
+
+                    console.log("From next_ques():")
+                    console.log(result);
+
+                    if (temp <= parseInt(self.total_qcount())) {
+                        self.qCount(temp);
+                        self.pair_id(result['pair_id']);
+                        self.hindiSentence(result['hindi']);
+                        self.englishSentence(result['english']);
+                        self.show_next_ques();
+                    }
+
+                    else {
+                        let ch_index = self.chapter_numbers().indexOf(self.selectedChapter());
+                        if (ch_index < self.chapter_numbers().length - 1) {
+                            self.qCount(0);
+
+                            console.log(self.chapter_numbers()[ch_index + 1]);
+                            // $(".customChaptersSelect").val(self.chapter_numbers()[ch_index + 1]);
+                            self.selectedChapter(self.chapter_numbers()[ch_index + 1]);
+                            self.next_ques_chapter_wise();
+                        }
+                    }
+
+                },
+
+                error: function (xhr, status, error) {
+                    console.log(self.selectedChapter());
+                    console.log(self.selectedDifficulty());
+                    console.log(xhr, status, error);
+                }
+            });
+        };
+
+        self.show_next_ques = function () {
+            console.log(self.englishSentence());
+            self.optionWords(shuffle(self.englishSentence().split(" ")));
+        };
+
+        self.clear_words_from_sentence = function () {
+            let x = self.wordsPickedArray.pop();
+
+
+            $(".customWordButton[disabled]").each(function () {
+                if (this.innerText == x) {
+                    this.disabled = false;
+                    return false;
+                }
+            });
+        }
+
+        self.clear_all_words = function () {
+            self.wordsPickedArray([]);
+            $(".customWordButton").prop('disabled', false);
+            self.hintCounter(0);
+            self.hintDisabled(false);
+        };
+
+        self.submit_sentence = function () {
+
+            if (self.wordsPickedArray().length == 0) {
+                $("#myModal .custom_model_body_message").html("कृपया पहले वाक्य बनाएं");
+            }
+
+            else if (self.sentenceFormed() != self.englishSentence()) {
+                $("#myModal .custom_model_body_message").html("आपका वाक्य गलत है");
+                self.hasSubmittedAnswer(true);
+                self.write_to_attempt_log('FALSE'); // Boolean value for SQLite
+            }
+
+            else if (self.sentenceFormed() === self.englishSentence()) {
+                $("#myModal .custom_model_body_message").html("आपका वाक्य सही है");
+                self.hasSubmittedAnswer(true);
+                self.write_to_attempt_log('TRUE'); // Boolean value for SQLite
+            }
+        }
+
+        self.write_to_attempt_log = function (attempt_result) {
+            $.post({
+                url: `${HOST}/write_to_attempt_log_mysql`,
+                headers: { "Content-Type": "application/json" },
+                data: {
+                    username: self.username(),
+                    pair_id: self.pair_id(),
+                    result: attempt_result
+                },
+
+                success: function (out) {
+                    console.log("Success: " + out)
+                },
+
+                error: function (xhr, status, error) {
+                    console.log(self.selectedChapter());
+                    console.log(xhr, status, error);
+                }
+            });
+        }
+
+        self.handle_next_question = function () {
+            self.next_ques_chapter_wise();
+            self.clear_all_words();
+            self.hasSubmittedAnswer(false);
+            self.hintCounter(0);
+            self.hintDisabled(false);
+        }
+
+        self.show_hint = function () {
+            self.wordsPickedArray([]);
+            $(".customWordButton").prop('disabled', false);
+
+            let x = self.englishSentence().split(" ");
+
+            for (let i = 0; i < self.hintCounter() + 1; i++) {
+                self.wordsPickedArray.push(x[i])
+
+                $(".customWordButton").each(function () {
+                    if (this.innerText == x[i]) {
+                        this.disabled = true;
+                        return false;
+                    }
+                })
+            }
+
+            if (self.hintCounter() < x.length) {
+                self.hintCounter(self.hintCounter() + 1);
+                if (self.hintCounter() >= x.length) {
+                    self.hintDisabled(true);
+                }
+            }
+        }
+
+        self.registrationMessage = ko.observable("");
+        self.totalAttempted = ko.observable(0);
+
+        // Function to get user's total progress
+        self.getUserProgress = function() {
+            $.ajax({
+                url: `${HOST}/get_user_progress_mysql`,
+                type: 'GET',
+                headers: {
+                    'Authorization': self.jwtToken()
+                },
+                success: function(response) {
+                    if (response && response.total_attempted) {
+                        self.totalAttempted(response.total_attempted);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Failed to fetch user progress:', error);
+                }
+            });
+        };
+
+        self.clearHeader = function() {
+            $(".customHeaderChooseChapter").toggle();
+            $(".customHeaderChooseDifficulty").toggle();
+            $(".customHeaderTranslate").toggle();
+            $(".customHeaderSentenceLabel").toggle();
+            $(".customWelcomeHeaderWhenHidden").toggle();
+            $("div.welcomeHeader").toggle();
+        };
+    };
+
+    ko.applyBindings(viewModel);
+
+    function shuffle(array) {
+        let currentIndex = array.length, randomIndex;
+
+        // While there remain elements to shuffle.
+        while (currentIndex > 0) {
+
+            // Pick a remaining element.
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+                array[randomIndex], array[currentIndex]];
+        }
+
+        return array;
+    }
+</script>
